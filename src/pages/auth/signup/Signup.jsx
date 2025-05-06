@@ -26,7 +26,10 @@ const Toast = ({ message, type, onClose }) => {
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-2">
-          <IoIosCheckmarkCircleOutline size={24} className="mt-1 text-green-500" />
+          <IoIosCheckmarkCircleOutline
+            size={24}
+            className="mt-1 text-green-500"
+          />
           <div className="flex flex-col">
             <span className="text-base font-medium">{message}</span>
             <span className="text-sm text-gray-500 leading-5">
@@ -75,13 +78,14 @@ export default function Signup() {
 
   const validateStep = () => {
     const newErrors = {};
-    
+
     if (step === 1 && !role) {
       newErrors.role = "Please select a role";
     }
 
     if (step === 2) {
-      if (!formData.fullName?.trim()) newErrors.fullName = "Full name is required";
+      if (!formData.fullName?.trim())
+        newErrors.fullName = "Full name is required";
       if (!formData.email?.trim()) newErrors.email = "Email is required";
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
         newErrors.email = "Invalid email format";
@@ -97,7 +101,8 @@ export default function Signup() {
 
     if (step === 3) {
       if (role === "investor") {
-        if (!formData.capitalRange) newErrors.capitalRange = "Capital range is required";
+        if (!formData.capitalRange)
+          newErrors.capitalRange = "Capital range is required";
         if (!formData.accreditationStatus) {
           newErrors.accreditationStatus = "Accreditation status is required";
         }
@@ -159,7 +164,7 @@ export default function Signup() {
     try {
       const data = localStorage.getItem(key);
       if (!data) return [];
-      
+
       const parsed = JSON.parse(data);
       return Array.isArray(parsed) ? parsed : [];
     } catch (error) {
@@ -171,7 +176,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     if (!validateStep()) {
       setIsSubmitting(false);
       return;
@@ -180,8 +185,10 @@ export default function Signup() {
     try {
       // Convert files to Base64
       const [profilePicture, pitchDeck] = await Promise.all([
-        formData.profilePicture ? convertFileToBase64(formData.profilePicture) : null,
-        formData.pitchDeck ? convertFileToBase64(formData.pitchDeck) : null
+        formData.profilePicture
+          ? convertFileToBase64(formData.profilePicture)
+          : null,
+        formData.pitchDeck ? convertFileToBase64(formData.pitchDeck) : null,
       ]);
 
       const userData = {
@@ -192,7 +199,7 @@ export default function Signup() {
         pitchDeck,
         createdAt: new Date().toISOString(),
         password: undefined,
-        confirmPassword: undefined
+        confirmPassword: undefined,
       };
 
       // Get existing data safely
@@ -200,26 +207,31 @@ export default function Signup() {
       const existingCredentials = getStoredData("userCredentials");
 
       // Check for duplicate email
-      if (existingUsers.some(user => user.email === formData.email)) {
+      if (existingUsers.some((user) => user.email === formData.email)) {
         showToast("This email is already registered", "error");
         setIsSubmitting(false);
         return;
       }
 
       // Update storage
-      localStorage.setItem("users", JSON.stringify([...existingUsers, userData]));
-      localStorage.setItem("userCredentials", JSON.stringify([
-        ...existingCredentials,
-        {
-          email: formData.email,
-          password: formData.password,
-          userId: userData.id
-        }
-      ]));
+      localStorage.setItem(
+        "users",
+        JSON.stringify([...existingUsers, userData])
+      );
+      localStorage.setItem(
+        "userCredentials",
+        JSON.stringify([
+          ...existingCredentials,
+          {
+            email: formData.email,
+            password: formData.password,
+            userId: userData.id,
+          },
+        ])
+      );
 
       showToast("Registration successful! Redirecting...", "success");
       setTimeout(() => navigate("/login", { replace: true }), 2000);
-
     } catch (error) {
       console.error("Registration error:", error);
       showToast("Registration failed. Please try again.", "error");
@@ -229,9 +241,9 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex items-center justify-center h-full md:h-screen bg-gray-50">
+    <div className="flex items-center justify-center h-full bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-        <div className="w-full sm:w-[75vw] lg:w-[45vw] mx-auto">
+        <div className="h-full w-full sm:w-[75vw] lg:w-[45vw] mx-auto">
           <ProgressBar step={step} />
 
           <div className="bg-white rounded-lg shadow-xl p-8 dark:bg-gray-800">
@@ -250,7 +262,9 @@ export default function Signup() {
             {step === 3 && (
               <div className="space-y-6">
                 <h2 className="text-lg font-semibold tracking-wider text-blue-600 uppercase mb-8 text-center">
-                  {role === "investor" ? "Investment Details" : "Business Details"}
+                  {role === "investor"
+                    ? "Investment Details"
+                    : "Business Details"}
                 </h2>
                 {role === "investor" ? (
                   <InvestorDropdown
@@ -292,7 +306,11 @@ export default function Signup() {
                 className="w-full md:w-24 ml-auto"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Processing..." : step === 4 ? "Submit" : "Next"}
+                {isSubmitting
+                  ? "Processing..."
+                  : step === 4
+                  ? "Submit"
+                  : "Next"}
               </Button>
             </div>
           </div>

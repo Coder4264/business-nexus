@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import { Outlet } from "react-router-dom";
-import ProfilePage from "./ProfilePage";
+import React from "react";
 import useCurrentUser from "./useCurrentUser";
 import InvestorIndex from "./InvestorIndex";
 import EnterprenuerIndex from "./EnterprenuerIndex";
+import EnterprenuerProfile from "./EnterprenuerProfile";
+import InvestorProfile from "./InvestorProfile";
 
-export default function Dashboard() {
-  const navigate = useNavigate();
-  const { userData, loading, handleLogout } = useCurrentUser();
-
+export default function GuestProfile() {
+  const { userData, loading } = useCurrentUser();
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -45,9 +41,9 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-8">
           {userData.role === "investor" ? (
-            <InvestorIndex userData={userData} />
+            <EnterprenuerProfile />
           ) : (
-            <EnterprenuerIndex userData={userData} />
+            <InvestorProfile />
           )}
         </div>
       </div>
