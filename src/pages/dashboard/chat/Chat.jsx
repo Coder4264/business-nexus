@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { FiSend } from "react-icons/fi";
-import { AiOutlineClear } from "react-icons/ai";
+import { AiOutlineClear, AiOutlineMenu } from "react-icons/ai";
+import { MessagesSquare } from "lucide-react";
+import Button from "../../../components/ui/button";
 
 const repliesData = {
   greetings: [
@@ -16,7 +18,7 @@ const repliesData = {
   personal: [
     "I'm good, thank you! How about you?",
     "I enjoy assisting with projects and solving problems.",
-    "I’m here to make your tasks easier.",
+    "I'm here to make your tasks easier.",
   ],
   project: [
     "The project is focused on enhancing user experience.",
@@ -36,12 +38,12 @@ const repliesData = {
   contact: [
     "You can reach out to me via email or phone.",
     "Feel free to drop me a message anytime.",
-    "I’m available on various platforms; just let me know.",
+    "I'm available on various platforms; just let me know.",
   ],
   fallback: [
     "I'm not sure about that.",
     "Can you clarify your question?",
-    "I’ll need more details to assist you better.",
+    "I'll need more details to assist you better.",
   ],
 };
 
@@ -52,6 +54,7 @@ export default function Chat() {
     return saved ? JSON.parse(saved) : {};
   });
   const [inputMessage, setInputMessage] = useState("");
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const messagesEndRef = useRef(null);
 
   const [users] = useState([
@@ -157,12 +160,28 @@ export default function Chat() {
       ...prev,
       [user.id]: Array.isArray(prev[user.id]) ? prev[user.id] : [],
     }));
+    setShowMobileSidebar(false); // Close sidebar on mobile after selection
   };
 
   return (
-    <div className="w-full flex bg-gray-100 items-center justify-center">
+    <div className="w-full flex bg-gray-100 items-center justify-center mt-16">
       <div className="flex w-screen h-[90vh] bg-white rounded-lg overflow-hidden">
-        <div className="w-80 border-r bg-gray-50">
+        {/* Mobile menu button */}
+        {/* <button
+          className="md:hidden fixed top-20 left-4 z-10 p-2 bg-white rounded-lg "
+          onClick={() => setShowMobileSidebar(!showMobileSidebar)}
+        >
+          <AiOutlineMenu className="w-5 h-5" />
+        </button> */}
+
+        {/* Sidebar - Hidden on mobile unless showMobileSidebar is true */}
+        <div
+          className={`w-80 border-r bg-gray-50 fixed md:relative z-20 md:z-0 h-[90vh] transition-transform duration-300 ease-in-out ${
+            showMobileSidebar
+              ? "translate-x-0"
+              : "-translate-x-full md:translate-x-0"
+          }`}
+        >
           <div className="p-4 border-b">
             <h2 className="text-xl font-semibold">Contacts</h2>
           </div>
@@ -194,11 +213,18 @@ export default function Chat() {
           </div>
         </div>
 
+        {/* Main chat area */}
         <div className="flex-1 flex flex-col">
           {activeUser ? (
             <>
               <div className="flex items-center justify-between p-4 border-b">
                 <div className="flex items-center space-x-4">
+                  <button
+                    className="md:hidden p-2"
+                    onClick={() => setShowMobileSidebar(true)}
+                  >
+                    <AiOutlineMenu className="w-5 h-5" />
+                  </button>
                   <img
                     src={activeUser.profileImg}
                     alt={activeUser.name}
@@ -268,8 +294,18 @@ export default function Chat() {
               </form>
             </>
           ) : (
-            <div className="flex-1 flex items-center justify-center">
-              <p>Select a contact to start chatting</p>
+            <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
+              <MessagesSquare className="w-20 h-20 text-gray-400" />
+
+              <h2 className="mt-4 text-lg font-semibold text-gray-600">
+                No Chat Selected
+              </h2>
+              <p className="mt-2 text-sm text-gray-500">
+                Select a conversation to start chatting or create a new one!
+              </p>
+              <Button onClick={() => setShowMobileSidebar(true)}>
+                Open Contacts
+              </Button>
             </div>
           )}
         </div>

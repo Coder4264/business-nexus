@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Button from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import InvestorProfile from "./InvestorProfile";
 
 export default function EnterprenuerIndex() {
   const [requests, setRequests] = useState([
@@ -9,7 +8,7 @@ export default function EnterprenuerIndex() {
       id: 1,
       name: "Sarah Anderson",
       profileImage:
-        "[https://images.unsplash.com/photo-1438761681033-6461ffad8d80](https://images.unsplash.com/photo-1438761681033-6461ffad8d80)",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
       snippet: "Tech investor passionate about AI and SaaS.",
       status: "Pending", // Other statuses: "Accepted", "Declined"
     },
@@ -17,7 +16,7 @@ export default function EnterprenuerIndex() {
       id: 2,
       name: "Michael Chen",
       profileImage:
-        "[https://images.unsplash.com/photo-1472099645785-5658abf4ff4e](https://images.unsplash.com/photo-1472099645785-5658abf4ff4e)",
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
       snippet: "Focused on healthcare innovation and biotech.",
       status: "Pending",
     },
@@ -25,7 +24,7 @@ export default function EnterprenuerIndex() {
       id: 3,
       name: "Emily Rodriguez",
       profileImage:
-        "[https://images.unsplash.com/photo-1494790108377-be9c29b29330](https://images.unsplash.com/photo-1494790108377-be9c29b29330)",
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
       snippet: "Investing in clean energy and sustainability.",
       status: "Pending",
     },
@@ -46,7 +45,7 @@ export default function EnterprenuerIndex() {
 
   const RequestCard = ({ request }) => (
     <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col ">
-      {/\* Profile Image \*/}{" "}
+      {/* Profile Image */}
       <div className="rounded-lg overflow-hidden mb-4">
         <img
           src={request.profileImage}
@@ -64,7 +63,7 @@ export default function EnterprenuerIndex() {
         <p className="text-sm text-gray-600">{request.snippet}</p>
 
         {request.status === "Accepted" ? (
-          <div className="w-full flex items-center justify-between gap-4 mt-11">
+          <div className="w-full flex items-center justify-between gap-2 mt-11">
             <Button
               className="w-full md:w-36 px-4 cursor-pointer"
               onClick={() => console.log(`Viewing profile of ${request.name}`)}
@@ -97,13 +96,13 @@ export default function EnterprenuerIndex() {
       {request.status === "Pending" && (
         <div className="w-full flex items-center justify-between gap-3 ">
           <Button
-            className="w-full md:w-36 bg-green-500 text-white px-4 rounded-md hover:bg-green-600"
+            className="w-full lg:w-36 bg-green-500 text-white px-4 rounded-md hover:bg-green-600"
             onClick={() => handleRequestAction(request.id, "accept")}
           >
             Accept
           </Button>
           <Button
-            className="w-full md:w-36 bg-red-500 text-white px-4  rounded-md hover:bg-red-600"
+            className="w-full lg:w-36 bg-red-500 text-white px-4  rounded-md hover:bg-red-600"
             onClick={() => handleRequestAction(request.id, "decline")}
           >
             Decline
@@ -114,14 +113,14 @@ export default function EnterprenuerIndex() {
   );
 
   return (
-    <div className="w-[80vw] mx-auto min-h-screen p-6">
-      <h1 className="text-4xl font-bold text-gray-900 mb-4">
-        View Collaboration Requests{" "}
+    <div className="w-full md:w-[90vw] mx-auto min-h-screen p-3 md:p-6">
+      <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+        View Collaboration Requests
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {requests.length === 0 ? (
           <p className="text-gray-600 text-center col-span-full">
-            No collaboration requests at the moment.{" "}
+            No collaboration requests at the moment.
           </p>
         ) : (
           requests.map((request) => (

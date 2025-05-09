@@ -1,45 +1,44 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function Testimonials() {
   const testimonials = [
     {
-      name: 'John Doe',
-      role: 'CEO, CreativeWorks',
+      name: "John Doe",
+      role: "CEO, CreativeWorks",
       testimonial:
-        'This service exceeded my expectations. The team was professional and delivered high-quality work.',
-      image: 'https://i.pravatar.cc/200?img=1',
+        "This service exceeded my expectations. The team was professional and delivered high-quality work.",
+      image: "https://i.pravatar.cc/200?img=1",
     },
     {
-      name: 'Emily Davis',
-      role: 'Product Manager, TechCorp',
+      name: "Emily Davis",
+      role: "Product Manager, TechCorp",
       testimonial:
-        'A fantastic experience! The results were exactly what we needed, and the process was seamless.',
-      image: 'https://i.pravatar.cc/200?img=2',
+        "A fantastic experience! The results were exactly what we needed, and the process was seamless.",
+      image: "https://i.pravatar.cc/200?img=2",
     },
     {
-      name: 'Michael Brown',
-      role: 'Lead Developer, CodeBase',
+      name: "Michael Brown",
+      role: "Lead Developer, CodeBase",
       testimonial:
-        'Highly recommend! Their attention to detail and commitment to quality are unparalleled.',
-      image: 'https://i.pravatar.cc/200?img=3',
+        "Highly recommend! Their attention to detail and commitment to quality are unparalleled.",
+      image: "https://i.pravatar.cc/200?img=3",
     },
     {
-      name: 'Sophia Wilson',
-      role: 'Designer, PixelStudio',
+      name: "Sophia Wilson",
+      role: "Designer, PixelStudio",
       testimonial:
-        'The best team I’ve worked with! Their creativity and expertise brought our vision to life.',
-      image: 'https://i.pravatar.cc/200?img=4',
+        "The best team I’ve worked with! Their creativity and expertise brought our vision to life.",
+      image: "https://i.pravatar.cc/200?img=4",
     },
   ];
 
   return (
     <section className="py-10 sm:py-12">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      {/* <h6 class="text-base font-semibold tracking-wider text-blue-600 uppercase">What our client say</h6> */}
         <Swiper
           modules={[Pagination, Autoplay]}
           autoplay={{ delay: 3000 }}

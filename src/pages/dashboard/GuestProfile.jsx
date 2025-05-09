@@ -2,8 +2,8 @@ import React from "react";
 import useCurrentUser from "./useCurrentUser";
 import InvestorIndex from "./InvestorIndex";
 import EnterprenuerIndex from "./EnterprenuerIndex";
-import EnterprenuerProfile from "./EnterprenuerProfile";
-import InvestorProfile from "./InvestorProfile";
+import EnterprenuerProfile from "./enterprenuer-profile/EnterprenuerProfile";
+import InvestorProfile from "./investor-profile/InvestorProfile";
 
 export default function GuestProfile() {
   const { userData, loading } = useCurrentUser();

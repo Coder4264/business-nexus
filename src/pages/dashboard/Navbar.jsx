@@ -21,7 +21,7 @@ export default function Navbar({ data, handleLogout }) {
 
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200">
-      <div className="max-w-screen flex flex-wrap items-center justify-between mx-auto px-4 sm:px-8 py-4">
+      <div className="max-w-screen flex flex-wrap items-center justify-between mx-auto px-4 sm:px-8 py-1 sm:py-2">
         <Link
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -51,7 +51,7 @@ export default function Navbar({ data, handleLogout }) {
                     )}
                   </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="mr-4">
                   <DropdownMenuItem>
                     <Link to="/dashboard/profile">Profile</Link>
                   </DropdownMenuItem>
@@ -60,7 +60,7 @@ export default function Navbar({ data, handleLogout }) {
                       <p>Logout</p>
                       <LogOut
                         size={20}
-                        className="cursor-pointer hover:text-red-600"
+                        className="cursor-pointer"
                         title="Log out"
                       />
                     </div>

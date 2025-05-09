@@ -11,7 +11,7 @@ const entrepreneurData = [
     startupName: "TechVision AI",
     pitchSummary:
       "Revolutionizing enterprise AI solutions with cutting-edge machine learning algorithms.",
-    profileImage: "https://images.unsplash.com/photo-1554151228-14d9def656e4", // Example image
+    profileImage: "/enterprenuer1.jpeg",
   },
   {
     id: 2,
@@ -19,8 +19,7 @@ const entrepreneurData = [
     startupName: "GreenEnergy Solutions",
     pitchSummary:
       "Sustainable energy solutions for residential and commercial applications.",
-    profileImage:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d", // Example image
+    profileImage: "/enterprenuer2.jpeg",
   },
   {
     id: 3,
@@ -28,14 +27,13 @@ const entrepreneurData = [
     startupName: "HealthTech Pro",
     pitchSummary:
       "Digital health platform for remote patient monitoring and care.",
-    profileImage:
-      "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e", // Example image
+    profileImage: "/enterprenuer3.jpeg",
   },
 ];
 
 const EntrepreneurCard = React.memo(({ entrepreneur }) => {
   return (
-    <div className="flex flex-col bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl">
+    <div className="flex flex-col bg-white rounded-xl shadow-lg p-3 md:p-6 transition-all duration-300 hover:shadow-xl">
       <img
         className="aspect-square object-cover rounded-lg"
         src={entrepreneur.profileImage}
@@ -50,7 +48,7 @@ const EntrepreneurCard = React.memo(({ entrepreneur }) => {
         <p className="text-gray-600">{entrepreneur.pitchSummary}</p>
       </div>
       {/* View Profile Button */}
-      <div className="mt-4 flex items-center justify-between ">
+      <div className="mt-4 flex items-center justify-between gap-2">
         <Button
           onClick={() =>
             console.log(`Viewing profile for ${entrepreneur.name}`)
@@ -97,11 +95,11 @@ export default function InvestorIndex({ userData }) {
   }, [searchTerm, debouncedSearch]);
 
   return (
-    <div className="w-[80vw] mx-auto min-h-screen p-6 md:p-8">
+    <div className="w-full md:w-[90vw] mx-auto min-h-screen p-3 md:p-8">
       <div className="">
         {/* Header and Search */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
             View List of Entrepreneurs
           </h1>
           <div className="w-full relative">
@@ -124,7 +122,7 @@ export default function InvestorIndex({ userData }) {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredEntrepreneurs.map((entrepreneur) => (
               <EntrepreneurCard
                 key={entrepreneur.id}

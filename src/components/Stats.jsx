@@ -1,5 +1,10 @@
 import React from "react";
-import { FaChartLine, FaUsers, FaDollarSign, FaPercentage } from "react-icons/fa";
+import {
+  FaChartLine,
+  FaUsers,
+  FaDollarSign,
+  FaPercentage,
+} from "react-icons/fa";
 import CountUp from "react-countup";
 
 export default function Stats() {
@@ -11,7 +16,7 @@ export default function Stats() {
       icon: <FaUsers className="w-6 h-6 text-blue-600" />,
       prefix: "",
       suffix: "+",
-      growth: 15.3
+      growth: 15.3,
     },
     {
       id: 2,
@@ -20,16 +25,16 @@ export default function Stats() {
       icon: <FaChartLine className="w-6 h-6 text-blue-600" />,
       prefix: "",
       suffix: "+",
-      growth: 19.7
+      growth: 19.7,
     },
     {
       id: 3,
       title: "Total Investment Value",
-      value: 2500000,
+      value: 2800000,
       icon: <FaDollarSign className="w-6 h-6 text-blue-600" />,
       prefix: "$",
       suffix: "",
-      growth: 25.7
+      growth: 25.7,
     },
     {
       id: 4,
@@ -38,15 +43,17 @@ export default function Stats() {
       icon: <FaPercentage className="w-6 h-6 text-blue-600" />,
       prefix: "",
       suffix: "%",
-      growth: 60
-    }
+      growth: 60,
+    },
   ];
 
   return (
     <div className=" bg-white">
       <div className="w-full max-w-7xl px-4 md:px-5 lg:px-5 py-12 md:py-18 mx-auto">
         <div className="mb-6">
-        <h6 class="text-base font-semibold tracking-wider text-blue-600 uppercase">Last Month's Insight</h6>
+          <h6 class="text-base font-semibold tracking-wider text-blue-600 uppercase">
+            Last Month's Insight
+          </h6>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -81,7 +88,10 @@ export default function Stats() {
 
               <div className="mt-2 flex items-center text-green-600">
                 <FaChartLine className="w-4 h-4 mr-1" />
-                <span className="text-sm font-medium"> +{stat.growth}% from last month</span>
+                <span className="text-sm font-medium">
+                  {" "}
+                  +{stat.growth}% from last month
+                </span>
               </div>
             </div>
           ))}

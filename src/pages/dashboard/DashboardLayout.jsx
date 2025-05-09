@@ -18,9 +18,9 @@ export default function DashboardLayout() {
   return (
     <>
       <Navbar data={userData} handleLogout={handleLogout} />
-      <main className="min-h-screen mt-16">
+      <main className="min-h-screen mt-8">
         <Outlet />
-        {/* ✅ This renders nested routes like <Dashboard /> or <ProfilePage /> */}
+        {/* This will render nested routes like <Dashboard /> or <ProfilePage and other /> */}
       </main>
       <Footer />
     </>
