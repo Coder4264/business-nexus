@@ -195,18 +195,20 @@ export default function Chat() {
                 onClick={() => handleUserSelect(user)}
               >
                 <div className="flex items-center space-x-3">
-                  <img
-                    src={user.profileImg}
-                    alt={user.name}
-                    className="w-10 h-10 rounded-full"
-                  />
+                  <div className="relative ">
+                    <img
+                      src={user.profileImg}
+                      alt={user.name}
+                      className="w-10 h-10 rounded-full"
+                    />
+                    {user.online && (
+                      <div className="absolute bottom-0 -right-1 w-3 h-3 bg-green-500 rounded-full"></div>
+                    )}
+                  </div>
                   <div>
                     <h3 className="font-medium">{user.name}</h3>
                     <p className="text-sm text-gray-500">{user.role}</p>
                   </div>
-                  {user.online && (
-                    <span className="w-3 h-3 bg-green-500 rounded-full" />
-                  )}
                 </div>
               </div>
             ))}

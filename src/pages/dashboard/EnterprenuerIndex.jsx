@@ -44,7 +44,7 @@ export default function EnterprenuerIndex() {
   };
 
   const RequestCard = ({ request }) => (
-    <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col ">
+    <div className="bg-white rounded-xl shadow-lg p-2 md:p-4 flex flex-col ">
       {/* Profile Image */}
       <div className="rounded-lg overflow-hidden mb-4">
         <img
@@ -96,13 +96,13 @@ export default function EnterprenuerIndex() {
       {request.status === "Pending" && (
         <div className="w-full flex items-center justify-between gap-3 ">
           <Button
-            className="w-full lg:w-36 bg-green-500 text-white px-4 rounded-md hover:bg-green-600"
+            className="w-full sm:w-24 md:w-32 lg:w-36 bg-green-500 text-white px-4 rounded-md hover:bg-green-600"
             onClick={() => handleRequestAction(request.id, "accept")}
           >
             Accept
           </Button>
           <Button
-            className="w-full lg:w-36 bg-red-500 text-white px-4  rounded-md hover:bg-red-600"
+            className="w-full sm:w-24 md:w-32 lg:w-36 bg-red-500 text-white px-4  rounded-md hover:bg-red-600"
             onClick={() => handleRequestAction(request.id, "decline")}
           >
             Decline
@@ -113,11 +113,11 @@ export default function EnterprenuerIndex() {
   );
 
   return (
-    <div className="w-full md:w-[90vw] mx-auto min-h-screen p-3 md:p-6">
+    <div className="w-full md:w-[90vw] mx-auto min-h-screen md:p-6">
       <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
         View Collaboration Requests
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {requests.length === 0 ? (
           <p className="text-gray-600 text-center col-span-full">
             No collaboration requests at the moment.

@@ -95,7 +95,7 @@ export default function InvestorIndex({ userData }) {
   }, [searchTerm, debouncedSearch]);
 
   return (
-    <div className="w-full md:w-[90vw] mx-auto min-h-screen p-3 md:p-8">
+    <div className="w-full md:w-[90vw] mx-auto min-h-screen p-2 md:p-8">
       <div className="">
         {/* Header and Search */}
         <div className="">

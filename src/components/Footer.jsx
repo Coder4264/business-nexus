@@ -113,7 +113,7 @@ export default function Footer() {
         <hr class="mt-16 mb-10 border-gray-200" />
 
         <p class="text-sm text-center text-gray-600">
-          © Copyright {currentYear}, All Rights Reserved by Nexis
+          © Copyright {currentYear}, All Rights Reserved by Rehan Tufail
         </p>
       </div>
     </section>

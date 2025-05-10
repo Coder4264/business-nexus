@@ -20,7 +20,7 @@ export default function Navbar({ data, handleLogout }) {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-neutral-100">
       <div className="max-w-screen flex flex-wrap items-center justify-between mx-auto px-4 sm:px-8 py-1 sm:py-2">
         <Link
           to="/"
@@ -51,11 +51,16 @@ export default function Navbar({ data, handleLogout }) {
                     )}
                   </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="mr-4">
-                  <DropdownMenuItem>
-                    <Link to="/dashboard/profile">Profile</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleLogout}>
+                <DropdownMenuContent className="mr-4 ">
+                  <Link to="/dashboard/profile">
+                    <DropdownMenuItem className="cursor-pointer">
+                      Profile
+                    </DropdownMenuItem>
+                  </Link>
+                  <DropdownMenuItem
+                    onClick={handleLogout}
+                    className="cursor-pointer"
+                  >
                     <div className="w-full flex items-center justify-between">
                       <p>Logout</p>
                       <LogOut

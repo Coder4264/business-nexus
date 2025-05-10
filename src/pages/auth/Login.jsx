@@ -189,7 +189,7 @@ export default function Login() {
 
         <div className="mt-4 text-center">
           <p className="text-gray-600">
-            Don't have an account?{" "}
+            Don't have an account?
             <button
               onClick={() => navigate("/signup")}
               className="text-blue-600 hover:text-blue-500 font-medium"
